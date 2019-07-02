@@ -17,14 +17,12 @@ import java.util.List;
  */
 
 public class SimpleTextAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
     private List<String> list;
     private Context mContext;
 
     public SimpleTextAdapter(Context context, List<String> list) {
         this.mContext = context;
         this.list = list;
-
     }
 
     @NonNull
@@ -45,14 +43,11 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     private class SimpleTextHolder extends RecyclerView.ViewHolder {
-
-        TextView mTextView;
+        private TextView mTextView;
 
         SimpleTextHolder(View itemView) {
             super(itemView);
             mTextView = itemView.findViewById(R.id.tv_text);
         }
     }
-
-
 }

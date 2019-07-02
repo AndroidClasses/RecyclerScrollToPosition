@@ -55,7 +55,6 @@ public class LinearLayoutManagerWithScrollTop extends LinearLayoutManager {
             return 15f / displayMetrics.densityDpi;
         }
 
-
         @Override
         protected int getVerticalSnapPreference() {
             return SNAP_TO_START;
