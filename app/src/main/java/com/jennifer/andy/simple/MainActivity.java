@@ -15,7 +15,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private LinearLayoutManagerWithScrollTop layoutManager;
+    private LinearSnappedLayoutManager layoutManager;
 
     private EditText mEditText;
     private Button mBtnStart;
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        layoutManager = new LinearLayoutManagerWithScrollTop(this);
+        layoutManager = new LinearSnappedLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
 //        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(new SimpleTextAdapter(this, mStringList));

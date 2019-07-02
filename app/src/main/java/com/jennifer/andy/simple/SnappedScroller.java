@@ -7,10 +7,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSmoothScroller;
 import android.util.DisplayMetrics;
 
-class TopSnappedSmoothScroller extends LinearSmoothScroller {
+class SnappedScroller extends LinearSmoothScroller {
     private final LinearLayoutManager layoutManager;
     private final boolean snapToEnd;
-    public TopSnappedSmoothScroller(Context context, LinearLayoutManager layoutManager, boolean snapToEnd) {
+    public SnappedScroller(Context context, LinearLayoutManager layoutManager, boolean snapToEnd) {
         super(context);
         this.layoutManager = layoutManager;
         this.snapToEnd = snapToEnd;
@@ -32,6 +32,11 @@ class TopSnappedSmoothScroller extends LinearSmoothScroller {
 
     @Override
     protected int getVerticalSnapPreference() {
+        return snapToEnd ? SNAP_TO_END : SNAP_TO_START;
+    }
+
+    @Override
+    protected int getHorizontalSnapPreference() {
         return snapToEnd ? SNAP_TO_END : SNAP_TO_START;
     }
 }

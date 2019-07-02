@@ -71,9 +71,9 @@ public class LinearLayoutManagerWithScrollTop extends LinearLayoutManager {
 
     @Override
     public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state, int position) {
-        TopSnappedSmoothScroller topSnappedSmoothScroller = new TopSnappedSmoothScroller(recyclerView.getContext());
-        topSnappedSmoothScroller.setTargetPosition(position);
-        startSmoothScroll(topSnappedSmoothScroller);
+        TopSnappedSmoothScroller snappedScroller = new TopSnappedSmoothScroller(recyclerView.getContext());
+        snappedScroller.setTargetPosition(position);
+        startSmoothScroll(snappedScroller);
     }
 
     class TopSnappedSmoothScroller extends LinearSmoothScroller {

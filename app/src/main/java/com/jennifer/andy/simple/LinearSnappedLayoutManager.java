@@ -11,26 +11,26 @@ import android.util.AttributeSet;
  * Description:
  */
 
-public class LinearLayoutManagerWithScrollTop extends LinearLayoutManager {
+public class LinearSnappedLayoutManager extends LinearLayoutManager {
     private boolean snapToEnd;
 
-    public LinearLayoutManagerWithScrollTop(Context context) {
+    public LinearSnappedLayoutManager(Context context) {
         super(context);
     }
 
-    public LinearLayoutManagerWithScrollTop(Context context, int orientation, boolean reverseLayout) {
+    public LinearSnappedLayoutManager(Context context, int orientation, boolean reverseLayout) {
         super(context, orientation, reverseLayout);
     }
 
-    public LinearLayoutManagerWithScrollTop(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public LinearSnappedLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     @Override
     public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state, int position) {
-        TopSnappedSmoothScroller topSnappedSmoothScroller = new TopSnappedSmoothScroller(recyclerView.getContext(), this, snapToEnd);
-        topSnappedSmoothScroller.setTargetPosition(position);
-        startSmoothScroll(topSnappedSmoothScroller);
+        SnappedScroller snappedScroller = new SnappedScroller(recyclerView.getContext(), this, snapToEnd);
+        snappedScroller.setTargetPosition(position);
+        startSmoothScroll(snappedScroller);
     }
 
     public void setSnapToEnd(boolean snapToEnd) {
