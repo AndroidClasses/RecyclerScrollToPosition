@@ -6,6 +6,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -13,10 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
     private RecyclerView mRecyclerView;
+    private LinearLayoutManagerWithScrollTop layoutManager;
+
     private EditText mEditText;
     private Button mBtnStart;
+    private CompoundButton compoundButton;
+
     private List<String> mStringList;
 
     @Override
@@ -42,10 +46,14 @@ public class MainActivity extends AppCompatActivity {
                 mRecyclerView.smoothScrollToPosition(Integer.parseInt(number));
             }
         });
+
+        compoundButton = findViewById(R.id.snapToEnd);
+        compoundButton.setOnCheckedChangeListener((buttonView, isChecked) -> layoutManager.setSnapToEnd(isChecked));
     }
 
     private void initView() {
-        mRecyclerView.setLayoutManager(new LinearLayoutManagerWithScrollTop(this));
+        layoutManager = new LinearLayoutManagerWithScrollTop(this);
+        mRecyclerView.setLayoutManager(layoutManager);
 //        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(new SimpleTextAdapter(this, mStringList));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
